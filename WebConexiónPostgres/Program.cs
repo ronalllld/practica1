@@ -1,5 +1,5 @@
+using WebApplication2.Context;
 using Microsoft.EntityFrameworkCore;
-using BDuniversidad.context;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -10,9 +10,9 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-builder.Services.AddDbContext<DbContext>(options =>
+builder.Services.AddDbContext<AplicacionContexto>(Options=>
 {
-    options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConection"));
+    Options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection"));
 });
 
 var app = builder.Build();
